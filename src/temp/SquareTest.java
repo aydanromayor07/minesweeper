@@ -1,3 +1,20 @@
+/*
+ * Author: Aydan Romayor
+ * Class: SquareTest.java
+ * 4/11/2026
+ * 
+ * Description:
+ * Class to test the Square class.
+ * 
+ * Expected output:
+ * [-]
+ * [X]
+ * [5]
+ * [ó]
+ * [P]
+ * [2]
+ */
+
 package temp;
 import main.Square;
 

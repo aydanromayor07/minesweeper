@@ -1,7 +1,10 @@
 package temp;
+import main.Square;
 
-public class squaretest {
+public class SquareTest {
     public static void main(String[] args) {
-        System.out.println("test from squaretest file");
+        Square square = new Square();
+        
+        System.out.println(square); // Expected: [-]
     }
 }

@@ -5,14 +5,6 @@
  * 
  * Description:
  * Class to test the Square class.
- * 
- * Expected output:
- * [-]
- * [X]
- * [5]
- * [ó]
- * [P]
- * [2]
  */
 
 package temp;

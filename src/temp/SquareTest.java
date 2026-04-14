@@ -18,28 +18,32 @@
 package temp;
 import main.Square;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 public class SquareTest {
-    public static void main(String[] args) {
+    @Test
+    public void testSquares() {
         Square square1 = new Square();
 
-        printSquare(square1); // Expected: [-]
-        
+        Assert.assertEquals("[-]", square1.toString());
+
         square1.open();
-        printSquare(square1); // Expected: [X]
+        Assert.assertEquals("[X]", square1.toString());
 
         square1.setValue(5);
-        printSquare(square1); // Expected: [5]
+        Assert.assertEquals("[5]", square1.toString());
 
         int BOMB = 9;
         square1.setValue(BOMB);
-        printSquare(square1); // Expected: [ó]
+        Assert.assertEquals("[ó]", square1.toString());
 
         square1.flag();
-        printSquare(square1); // Expected: [P]
+        Assert.assertEquals("[P]", square1.toString());
 
         square1.flag();
         square1.setValue(2);
-        printSquare(square1); // Expected: [2]
+        Assert.assertEquals("[2]", square1.toString());
     }
 
     public static void printSquare(Square square) {

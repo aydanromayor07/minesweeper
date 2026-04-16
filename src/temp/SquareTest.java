@@ -18,24 +18,42 @@ public class SquareTest {
     public void testSquares() {
         Square square1 = new Square();
 
-        Assert.assertEquals("[-]", square1.toString());
+        Assert.assertEquals(false, square1.isOpen());
+        Assert.assertEquals("-", square1.toString());
 
         square1.open();
-        Assert.assertEquals("[X]", square1.toString());
+        Assert.assertEquals(true, square1.isOpen());
+        Assert.assertEquals(false, square1.isFlagged());
+        Assert.assertEquals(false, square1.isBomb());
+        Assert.assertEquals(0, square1.getValue());
+        Assert.assertEquals("X", square1.toString());
 
         square1.setValue(5);
-        Assert.assertEquals("[5]", square1.toString());
+        Assert.assertEquals(true, square1.isOpen());
+        Assert.assertEquals(false, square1.isFlagged());
+        Assert.assertEquals(false, square1.isBomb());
+        Assert.assertEquals(5, square1.getValue());
+        Assert.assertEquals("5", square1.toString());
 
         int BOMB = 9;
         square1.setValue(BOMB);
-        Assert.assertEquals("[ó]", square1.toString());
+        Assert.assertEquals(true, square1.isOpen());
+        Assert.assertEquals(false, square1.isFlagged());
+        Assert.assertEquals(true, square1.isBomb());
+        Assert.assertEquals("ó", square1.toString());
 
         square1.flag();
-        Assert.assertEquals("[P]", square1.toString());
+        Assert.assertEquals(true, square1.isOpen());
+        Assert.assertEquals(true, square1.isFlagged());
+        Assert.assertEquals(true, square1.isBomb());
+        Assert.assertEquals("P", square1.toString());
 
         square1.flag();
         square1.setValue(2);
-        Assert.assertEquals("[2]", square1.toString());
+        Assert.assertEquals(true, square1.isOpen());
+        Assert.assertEquals(false, square1.isFlagged());
+        Assert.assertEquals(false, square1.isBomb());
+        Assert.assertEquals("2", square1.toString());
     }
 
     public static void printSquare(Square square) {

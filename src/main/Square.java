@@ -8,10 +8,11 @@
  * A square either has a value from 0-8 or is a bomb.
  * A square can either be opened or closed.
  * A square can be flagged or not.
- * If a square is closed, it always prints "[ ]"
- * If a square is opened and is unflagged and is not a bomb, it shows its numerical value [n]
- * If a square is opened, unflagged, and is a bomb, it shows the bomb graphic [ó]
- * If a square is opened and is a flag, it shows the flag graphic [P]
+ * If a square is closed, it always prints " - "
+ * If a square is opened and is flagged, it always shows the flag graphic " P "
+ * If a square is opened, empty, unflagged, and isn't a bomb, it prints " X "
+ * If a sqaure is opened, isn't empty, unflagged, and isn't a bomb, it prints its numerical value " n "
+ * If a square is opened, unflagged, and is a bomb, it shows the bomb graphic " ó "
  */
 
 package main;
@@ -49,24 +50,21 @@ public class Square {
 
     public boolean isOpen() { return opened; }
 
+    public boolean isEmpty() { return value == EMPTY; }
+
     public boolean isFlagged() { return flagged; }
 
-    public String formattedString(String toInsert) {
-        return String.format("[%s]", toInsert);
-    }
+    public boolean isBomb() { return value == BOMB; }
 
     @Override
     public String toString() {
-        if (!opened) return formattedString(CLOSED_STRING);
-        if (flagged) return formattedString(FLAG_STRING);
+        if (!opened) return CLOSED_STRING;
+        if (flagged) return FLAG_STRING;
 
-        switch(getValue()) {
-            case EMPTY:
-                return formattedString(OPEN_STRING);
-            case BOMB:
-                return formattedString(BOMB_STRING);
-            default:
-                return formattedString(String.valueOf(getValue()));
-        }
+        return switch (getValue()) {
+            case EMPTY -> OPEN_STRING;
+            case BOMB -> BOMB_STRING;
+            default -> String.valueOf(getValue());
+        };
     }
 }
